@@ -1,12 +1,70 @@
-# React + Vite
+# 📝 React Todo App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and modern **Todo App** built using **React** and styled with **Tailwind CSS**.  
+This project helped me solidify core React concepts and demonstrate full CRUD functionality with persistent storage.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+👉 [Check it out on Netlify](https://coded-by-aman-todo-app.netlify.app/)
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Features
+
+- ✅ Add, edit, and delete tasks
+- ✅ Mark tasks as completed
+- ✅ Form validation with `react-hook-form`
+- ✅ Notifications using `react-toastify`
+- ✅ Data persistence using `localStorage`
+- ✅ Responsive UI with Tailwind CSS
+- ✅ Clean folder structure with Context API
+- ✅ Built with Vite for lightning-fast development
+
+---
+
+## 🧰 Tech Stack
+
+- **Frontend:** React.js, Vite
+- **State Management:** useState, useContext, useEffect
+- **Routing:** React Router v6 (including dynamic routing)
+- **Styling:** Tailwind CSS
+- **Forms:** React Hook Form
+- **Notifications:** React Toastify
+- **Persistence:** Browser LocalStorage
+- **Deployment:** Netlify
+
+---
+
+## 📂 Folder Structure
+src/
+├── components/
+├── context/
+├── pages/
+├── App.jsx
+├── index.css
+└── main.jsx
+
+
+---
+
+## 📦 Getting Started
+
+1. **Clone the repo:**
+
+```bash
+git clone https://github.com/CodedBy-Aman/todo-project.git
+cd todo-project
+Install dependencies: npm install
+Start the development server: npm run dev
+
+ ##Customization
+You can easily extend this app by:
+
+Adding filters (e.g., active, completed)
+
+Using useReducer for complex state
+
+Integrating with a backend API (e.g., MongoDB)
+
+Thanks to the amazing open-source community and tools like React, Tailwind CSS, and Vite!
