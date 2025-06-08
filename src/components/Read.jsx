@@ -20,7 +20,7 @@ const Header = () => {
 };
 
 const Read = () => {
-  const {todo, setTodo} = useContext(TodoContext);
+  const { todo, setTodo } = useContext(TodoContext);
 
   //task fading state
   const [fadingId, setFadingId] = useState(null);
@@ -74,7 +74,8 @@ const Read = () => {
         </h1>
         <div className="flex justify-between items-end mb-5">
           <h3 className="text-base  md:text-md text-slate-600 font-medium">
-            You have {todo.filter((task) => !task.isCompleted).length} tasks left today
+            You have {todo.filter((task) => !task.isCompleted).length} tasks
+            left today
           </h3>
           {todo.filter((task) => fadingId !== task.id).length > 0 && (
             <button
@@ -92,12 +93,16 @@ const Read = () => {
             <li
               key={task.id}
               className={`todo-item transition-all p-3 rounded-xl bg-slate-50/80 hover:bg-slate-100/80 flex justify-between items-center gap-4 duration-300 ${
-                fadingId === task.id ? "opacity-0 transform translate-x-4" : "opacity-100"
+                fadingId === task.id
+                  ? "opacity-0 transform translate-x-4"
+                  : "opacity-100"
               }`}
             >
               <span
                 className={`${
-                  task.isCompleted ? "line-through text-slate-400" : "text-slate-700"
+                  task.isCompleted
+                    ? "line-through text-slate-400"
+                    : "text-slate-700"
                 } text-base tracking-[.02em] md:text-lg lg:text-xl font-medium`}
               >
                 {task.title}

@@ -2,10 +2,10 @@ import { useForm } from "react-hook-form";
 import { nanoid } from "nanoid";
 import { toast } from "react-toastify";
 import { useContext } from "react";
-import { TodoContext } from './../context/TodoContext';
+import { TodoContext } from "./../context/TodoContext";
 
 const Create = () => {
-  const {todo, setTodo} = useContext(TodoContext);
+  const { todo, setTodo } = useContext(TodoContext);
 
   const {
     register,
@@ -19,7 +19,7 @@ const Create = () => {
     data.id = nanoid();
 
     setTodo([...todo, data]);
-    toast.success("Todo created successfully! 🎉")
+    toast.success("Todo created successfully! 🎉");
     reset();
   };
 
@@ -41,7 +41,7 @@ const Create = () => {
               className="w-full tracking-[.06em] text-lg md:text-xl lg:text-2xl mb-2 border-b-2 border-slate-200 p-2 outline-none focus:border-slate-400 transition-colors bg-transparent text-slate-700 placeholder-slate-400"
               type="text"
               placeholder="What needs to be done?"
-              {...register("title",{required:"Title is required"})}
+              {...register("title", { required: "Title is required" })}
             />
             {errors.title && (
               <small className="text-sm font-medium text-rose-500 absolute -bottom-6 left-0">
@@ -49,7 +49,7 @@ const Create = () => {
               </small>
             )}
           </div>
-          <button 
+          <button
             className="w-full py-3 px-6 bg-gradient-to-r from-slate-600 to-slate-500 text-white rounded-lg font-medium text-lg mt-8 hover:from-slate-700 hover:to-slate-600 transform hover:scale-[1.02] transition-all duration-200 shadow-md hover:shadow-slate-500/25"
             type="submit"
           >
