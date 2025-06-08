@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { toast } from "react-toastify";
-import { todoContext } from "../Wrapper";
+import { TodoContext } from "../context/TodoContext";
 
 //date and time
 const Header = () => {
@@ -13,15 +13,14 @@ const Header = () => {
   });
 
   return (
-    <h2 className="inline text-xs text-gray-600">
+    <h2 className="inline text-sm text-gray-500 font-medium">
       {day} {date}
     </h2>
   );
 };
 
 const Read = () => {
-  const [todo, setTodo] = useContext(todoContext);
-
+  const {todo, setTodo} = useContext(TodoContext);
 
   //task fading state
   const [fadingId, setFadingId] = useState(null);
@@ -42,10 +41,9 @@ const Read = () => {
 
     if (toggledTodo.isCompleted) {
       setFadingId(id);
-      toast.error("todo cleared!");
+      toast.error("Task completed! 🎯");
       setTimeout(() => {
         setTodo((todo) => todo.filter((t) => t.id != toggledTodo.id));
-
         setFadingId(null);
       }, 1500);
     } else {
@@ -58,60 +56,61 @@ const Read = () => {
     setButtonFade(true);
     setTimeout(() => {
       setTodo([]);
-      toast.error("All todo cleared!");
+      toast.error("All tasks cleared! 🧹");
       setButtonFade(false);
     }, 500);
   };
 
   return (
-    <div className="relative bg-read w-[40%] rounded-lg  p-10 overflow-y-auto">
-      <h1 className="flex justify-between items-center">
-        <span className="inline text-4xl font-normal text-heading tracking-normal underline decoration-2 underline-offset-5 mb-3 ">
-          Tasks
-        </span>
-        <span>
-          <Header />
-        </span>
-      </h1>
-      <h3 className="block mt-2 text-md opacity-50">
-        You have {todo.filter((task) => !task.isCompleted).length} tasks left
-        today
-      </h3>
-      <ul className="mt-6">
-        {todo.map((task) => (
-          <li
-            key={task.id}
-            className={`todo-item transition-all p-2 rounded-lg bg-white mt-3 flex justify-between items-center gap-2  duration-800 ${
-              fadingId === task.id ? "opacity-0 " : "opacity-100"
-            }`}
-          >
-            <span
-              className={`${
-                task.isCompleted ? "line-through" : ""
-              } text-xl font-[350]`}
+    <div className="relative bg-gradient-to-br from-indigo-50 to-purple-50 w-full md:w-[40%] rounded-2xl p-6 md:p-8 lg:p-10 overflow-y-auto shadow-lg">
+      <div className="bg-white rounded-xl p-6 md:p-8 shadow-md">
+        <h1 className="flex flex-col md:flex-row justify-between items-start md:items-center gap-2 md:gap-0 mb-6">
+          <span className="inline text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+            Tasks
+          </span>
+          <span>
+            <Header />
+          </span>
+        </h1>
+        <h3 className="block mt-2 text-sm md:text-md text-gray-500 font-medium">
+          You have {todo.filter((task) => !task.isCompleted).length} tasks left today
+        </h3>
+        <ul className="mt-6 space-y-3">
+          {todo.map((task) => (
+            <li
+              key={task.id}
+              className={`todo-item transition-all p-4 rounded-xl bg-gray-50 hover:bg-gray-100 flex justify-between items-center gap-4 duration-300 ${
+                fadingId === task.id ? "opacity-0 transform translate-x-4" : "opacity-100"
+              }`}
             >
-              {task.title}
-            </span>
+              <span
+                className={`${
+                  task.isCompleted ? "line-through text-gray-400" : "text-gray-700"
+                } text-base md:text-lg lg:text-xl font-medium`}
+              >
+                {task.title}
+              </span>
 
-            <input
-              type="checkbox"
-              className="w-5 h-5"
-              checked={task.isCompleted}
-              onChange={() => checkboxHandler(task.id)}
-            />
-          </li>
-        ))}
-      </ul>
-      {todo.filter((task) => fadingId !== task.id).length > 0 && (
-        <button
-          className={`absolute top-16 right-4 py-1 px-3 bg-white text-red-800 rounded-md font-normal text-md mt-8 transition-all duration-500 active:scale-95 ${
-            buttonFade ? "opacity-0" : "opacity-100"
-          }`}
-          onClick={handleClearAll}
-        >
-          Clear all
-        </button>
-      )}
+              <input
+                type="checkbox"
+                className="w-5 h-5 rounded-full border-2 border-indigo-500 text-indigo-600 focus:ring-indigo-500 cursor-pointer transition-all duration-200"
+                checked={task.isCompleted}
+                onChange={() => checkboxHandler(task.id)}
+              />
+            </li>
+          ))}
+        </ul>
+        {todo.filter((task) => fadingId !== task.id).length > 0 && (
+          <button
+            className={`absolute top-16 right-4 py-2 px-4 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-lg font-medium text-sm md:text-md mt-8 transition-all duration-300 hover:from-red-600 hover:to-pink-600 transform hover:scale-[1.02] shadow-md hover:shadow-lg ${
+              buttonFade ? "opacity-0" : "opacity-100"
+            }`}
+            onClick={handleClearAll}
+          >
+            Clear All
+          </button>
+        )}
+      </div>
     </div>
   );
 };
