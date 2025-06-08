@@ -13,7 +13,7 @@ const Header = () => {
   });
 
   return (
-    <h2 className="inline text-base text-gray-500 font-medium">
+    <h2 className="inline tracking-[.03em] text-base text-slate-600 font-medium">
       {day} {date}
     </h2>
   );
@@ -62,10 +62,10 @@ const Read = () => {
   };
 
   return (
-    <div className="bg-gradient-to-br from-indigo-50 to-purple-50 w-full md:w-full lg:w-[50%] rounded-2xl p-4 md:p-6 lg:p-8 overflow-y-auto shadow-lg">
-      <div className="relative bg-white rounded-xl p-6 h-full md:p-8 shadow-md">
-        <h1 className="flex items-end md:flex-row justify-between items-start  gap-2 md:gap-8 mb-6">
-          <span className="inline text-3xl md:text-4xl lg:text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+    <div className="bg-gradient-to-br from-slate-400/50 to-slate-200/100 w-full md:w-full lg:w-[50%] rounded-2xl p-4 md:p-6 lg:p-8 overflow-y-auto shadow-lg">
+      <div className="relative bg-white/80 backdrop-blur-sm rounded-xl p-6 h-full md:p-8 shadow-md">
+        <h1 className="flex items-end md:flex-row justify-between items-start gap-2 md:gap-8 mb-6">
+          <span className="inline tracking-[.02em] text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-slate-700 to-slate-600 bg-clip-text text-transparent">
             Tasks
           </span>
           <span>
@@ -73,12 +73,12 @@ const Read = () => {
           </span>
         </h1>
         <div className="flex justify-between items-end mb-5">
-          <h3 className="text-base md:text-md text-gray-500 font-medium">
+          <h3 className="text-base  md:text-md text-slate-600 font-medium">
             You have {todo.filter((task) => !task.isCompleted).length} tasks left today
           </h3>
           {todo.filter((task) => fadingId !== task.id).length > 0 && (
             <button
-              className={`py-1 px-4 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-lg font-medium text-base lg:text-lg md:text-lg transition-all duration-300 hover:from-red-600 hover:to-pink-600 transform hover:scale-[1.02] shadow-md hover:shadow-lg ${
+              className={`py-1 px-4 tracking-[.04em] bg-gradient-to-r from-slate-600 to-slate-500 text-white rounded-lg font-medium text-base lg:text-lg md:text-lg transition-all duration-300 hover:from-slate-700 hover:to-slate-600 transform hover:scale-[1.02] shadow-md hover:shadow-slate-500/25 ${
                 buttonFade ? "opacity-0" : "opacity-100"
               }`}
               onClick={handleClearAll}
@@ -91,21 +91,21 @@ const Read = () => {
           {todo.map((task) => (
             <li
               key={task.id}
-              className={`todo-item transition-all p-3 rounded-xl bg-gray-50 hover:bg-gray-200 flex justify-between items-center gap-4 duration-300 ${
+              className={`todo-item transition-all p-3 rounded-xl bg-slate-50/80 hover:bg-slate-100/80 flex justify-between items-center gap-4 duration-300 ${
                 fadingId === task.id ? "opacity-0 transform translate-x-4" : "opacity-100"
               }`}
             >
               <span
                 className={`${
-                  task.isCompleted ? "line-through text-gray-400" : "text-gray-700"
-                } text-base md:text-lg lg:text-xl font-medium`}
+                  task.isCompleted ? "line-through text-slate-400" : "text-slate-700"
+                } text-base tracking-[.02em] md:text-lg lg:text-xl font-medium`}
               >
                 {task.title}
               </span>
 
               <input
                 type="checkbox"
-                className="w-5 h-5 rounded-full border-2 border-indigo-500 text-indigo-600 focus:ring-indigo-500 cursor-pointer transition-all duration-200"
+                className="w-5 h-5 rounded-full border-2 border-slate-400 text-slate-500 focus:ring-slate-400 cursor-pointer transition-all duration-200"
                 checked={task.isCompleted}
                 onChange={() => checkboxHandler(task.id)}
               />
